@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="cy794g4JUQjRn9vCdGt7" name="ページ1">
-        <mxGraphModel dx="597" dy="860" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="588" dy="680" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -25,7 +25,7 @@
                 <mxCell id="72" value="task_id&lt;br&gt;user_id" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;" vertex="1" parent="1">
                     <mxGeometry x="610" y="160" width="120" height="80" as="geometry"/>
                 </mxCell>
-                <mxCell id="73" value="labeling" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;" vertex="1" parent="1">
+                <mxCell id="73" value="link" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;" vertex="1" parent="1">
                     <mxGeometry x="610" y="120" width="120" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="74" value="title&lt;br&gt;content&lt;br&gt;priority&lt;br&gt;limit&lt;br&gt;status" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;" vertex="1" parent="1">
