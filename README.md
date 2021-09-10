@@ -38,3 +38,27 @@ ___
 | ------------------ | :----------------------------: | -------------------------: |
 |task_id||bigint|  
 |label_id||bigint|  
+
+
+
+# Herokuへのデプロイ手順  
+___
+    $ heroku create  
+  
+##  アセットプリコンパイルをする  
+    $ rails assets:precompile RAILS_ENV=production  
+
+##  Heroku stackのバージョンを下げる  
+    $ heroku stack:set heroku-18  
+
+##  コミットする  
+    $ git add -A  
+    $ git commit -m "コミットメッセージ"  
+
+## Heroku buildpackを追加  
+    $ heroku buildpacks:set heroku/ruby  
+    $ heroku buildpacks:add --index 1 heroku/nodejs  
+
+## Herokuにデプロイ  
+    $ git push heroku master
+
