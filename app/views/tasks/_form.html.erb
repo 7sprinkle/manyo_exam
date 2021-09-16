@@ -12,17 +12,17 @@
   <% end %>
 
   <%= form.label :title%>
-  <br>
+
   <%= form.text_field :title%>
-  <br>
+
   <%= form.label :content %>
-  <br>
+
   <%= form.text_area :content %>
-  <br>
+
   <%= form.label :終了期限 %>
-  <br>
+
   <%= form.date_field :expired_at%>
-  <br>
+
   <%= form.label :ステータス %>
 
   <%= form.select :status, Task.statuses.keys.to_a, {} %>
