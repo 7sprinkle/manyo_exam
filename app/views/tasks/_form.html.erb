@@ -22,6 +22,8 @@
   <%= form.label :終了期限 %>
   <br>
   <%= form.date_field :expired_at%>
+  <%= form.label :ステータス %>
+  <%= form.select :status, Task.statuses.keys.to_a, {} %>
 
   <div class="actions">
     <%= form.submit %>
