@@ -1,18 +1,39 @@
 <p id="notice"><%= notice %></p>
-
 <h1>Tasks</h1>
+
+<div class="container">
+  <form class="form-inline">
+    <div class="form-group">
+      <%= form_with model: @task, method: :get, local: true do |form| %>
+        <%= form.label :'タスク名' %>
+        <%= form.text_field :search_title %>
+        <%= form.label :'ステータス' %>
+        <%= form.select :search_status, Task.statuses.keys.to_a, { include_blank: '選択してください'} %>
+        <%= form.submit '検索', name: 'search' ,class:"btn btn-success"%>
+        <%= link_to '検索終了', tasks_path ,class: "btn btn-default" %>
+      <% end %>
+    </div>
+  </form>
+
+  <%= link_to '新規投稿', new_task_path %>
+</div>
 
 <div class="index_main">
   <table class="table">
     <tr>
       <th>タスク名</th>
       <th>内容</th>
+      <th><%= link_to "終了期限でソートする", tasks_path(sort_expired: "true") %></th>
+      <th>ステータス</th>
+      <th><%= link_to "優先順位▼",tasks_path(sort_priority: "true") %></th>
     </tr>
     <% @tasks.each do |task| %>
     <tr class="index_list">
       <td class="task_row"><%= task.title %></td>
       <td class="task_row"><%= task.content %></td>
-      <td class="task_row">
+      <td class="task_row"><%= task.expired_at %></td>
+      <td class="task_row"><%= task.status %></td>
+      <td class="task_row"><%= task.priority %></td>
       <td><button type="button" class="btn btn-outline-primary"><%= link_to '詳細', task %></button></td>
       <td><button type="button" class="btn btn-outline-success"><%= link_to '編集', edit_task_path(task.id) %></button></td>
       <td><button type="button" class="btn btn-outline-primary"><%= link_to '削除', task, method: :delete, data: { confirm: '本当に削除しますか?' } %></button></td>
@@ -20,5 +41,6 @@
     <% end %>
   </table>
 </div>
-
-<%= link_to 'New Task', new_task_path %>
+<div class="index_page">
+  <%= paginate @tasks %>
+</div>

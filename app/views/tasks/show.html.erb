@@ -4,6 +4,8 @@
 
 <p>タイトル: <%= @task.title %></p>
 <p>内容: <%= @task.content %></p>
+<p>終了期限: <%= @task.expired_at %></p>
+<p>ステータス: <%= @task.status %></p>
 
 <%= link_to 'Edit', edit_task_path(@task) %> |
 <%= link_to 'Back', tasks_path %>

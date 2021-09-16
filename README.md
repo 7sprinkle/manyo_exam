@@ -8,7 +8,7 @@ ___
 |title||string|  
 |content||text|  
 |priority||integer|  
-|interval||datetime|  
+|expired_at||datetime|  
 |status||integer|  
 |user_id||bigint|  
   

@@ -12,13 +12,25 @@
   <% end %>
 
   <%= form.label :title%>
-  <br>
+
   <%= form.text_field :title%>
-  <br>
+
   <%= form.label :content %>
-  <br>
+
   <%= form.text_area :content %>
-  <br>
+
+  <%= form.label :終了期限 %>
+
+  <%= form.date_field :expired_at%>
+
+  <%= form.label :ステータス %>
+
+  <%= form.select :status, Task.statuses.keys.to_a, {} %>
+
+  <%= form.label :優先順位 %>
+
+  <%= form.select :priority, Task.priorities.keys.to_a, {} %>
+
 
   <div class="actions">
     <%= form.submit %>
