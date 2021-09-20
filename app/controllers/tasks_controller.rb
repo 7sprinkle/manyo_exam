@@ -22,7 +22,6 @@ class TasksController < ApplicationController
 
 
   def show
-#    @task = Task.find(params[:id])
   end
 
   def new
@@ -30,7 +29,6 @@ class TasksController < ApplicationController
   end
 
   def edit
-#    @task = Task.find(params[:id])
   end
 
   def create
@@ -52,12 +50,6 @@ class TasksController < ApplicationController
     else
       render :edit
     end
-    # @task = Task.find(params[:id])
-    #   if @task.update(task_params)
-    #     redirect_to task_path, notice: "Task was successfully updated."
-    #   else
-    #     render :edit
-    #   end
   end
 
   def destroy
