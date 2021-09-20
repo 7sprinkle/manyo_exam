@@ -1,7 +1,6 @@
 <div class="container">
-  <h2>ユーザー登録(ユーザのサインアップ画面)</h2>
-  <%= form_with(model: @user, local: true) do |f| %>
-
+  <h2>ユーザー登録</h2>
+    <%= form_with(model: @user, url: admin_users_path, local: true) do |f| %>
     <div class="form-group">
       <%= f.label :name %>
       <%= f.text_field :name ,class: "form-control" %>
@@ -14,10 +13,9 @@
       <%= f.label :admin, "管理者権限" %>
       <%= f.select :admin ,[['一般',false],['管理者',true]] %>
     </div>
-
     <div class="submit_record">
-      <%= f.submit "登録" ,class: "btn btn-default" %>
+      <%= f.submit "アカウント登録" ,class: "btn btn-default" %>
     </div>
-
-  <% end %>
+    <% end %>
+  <%= link_to '戻る', admin_users_path, class: "btn btn-default" %>
 </div>

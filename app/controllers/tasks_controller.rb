@@ -1,27 +1,28 @@
 class TasksController < ApplicationController
   before_action :set_task, only: %i[ show edit update destroy ]
+  before_action :authenticate_user, only: %i[edit update destroy]
 
   def index
     if params[:sort_expired]
-      @tasks = current_user.tasks.order(expired_at: :desc).page(params[:page]).per(10)
+      @tasks = current_user.tasks.order(expired_at: :desc).page(params[:page]).per(3)
     elsif params[:sort_priority]
-      @tasks = current_user.tasks.order(priority: :desc).page(params[:page]).per(10)
+      @tasks = current_user.tasks.order(priority: :desc).page(params[:page]).per(3)
     elsif
-      @tasks = current_user.tasks.order(created_at: :desc).page(params[:page]).per(10)
+      @tasks = current_user.tasks.order(created_at: :desc).page(params[:page]).per(3)
     end
 
     if params[:search_title].present? && params[:search_status].present?
-      @tasks = current_user.tasks.search_title(params[:search_title]).search_status(params[:search_status]).page(params[:page]).per(10)
+      @tasks = current_user.tasks.search_title(params[:search_title]).search_status(params[:search_status]).page(params[:page]).per(3)
     elsif params[:search_title].present?
-      @tasks = current_user.tasks.search_title(params[:search_title]).page(params[:page]).per(10)
+      @tasks = current_user.tasks.search_title(params[:search_title]).page(params[:page]).per(3)
     elsif params[:search_status].present?
-      @tasks = current_user.tasks.search_status(params[:search_status]).page(params[:page]).per(10)
+      @tasks = current_user.tasks.search_status(params[:search_status]).page(params[:page]).per(3)
     end
   end
 
 
   def show
-    @task = Task.find(params[:id])
+#    @task = Task.find(params[:id])
   end
 
   def new
@@ -29,7 +30,7 @@ class TasksController < ApplicationController
   end
 
   def edit
-    @task = Task.find(params[:id])
+#    @task = Task.find(params[:id])
   end
 
   def create
