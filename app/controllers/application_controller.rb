@@ -6,5 +6,7 @@ class ApplicationController < ActionController::Base
   def login_required
     redirect_to new_session_path unless current_user
   end
-
+  def logined_not_user_new
+    redirect_to tasks_path, notice:"ユーザー新規作成の場合はログアウトしてください" if logged_in?
+  end
 end

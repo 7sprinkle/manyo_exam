@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :login_required, only: [:new, :create]
+  before_action :logined_not_user_new, only: :new
 
   def new
     @user = User.new
@@ -9,8 +10,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
      if @user.save
       session[:user_id] = @user.id
-      redirect_to user_path(@user.id), notice:"登録が完了しました！"
-# #       redirect_to tasks_path, notice:"登録が完了しました！"
+#      redirect_to user_path(@user.id), notice:"登録が完了しました！"
+      redirect_to tasks_path, notice:"登録が完了しました！"
      else
       render :new
      end
@@ -18,6 +19,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @tasks = @user.tasks
   end
 
   def edit
