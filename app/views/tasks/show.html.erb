@@ -8,7 +8,11 @@
 <p>ステータス: <%= @task.status %></p>
 <p>優先度: <%= @task.priority %></p>
 <p>作成者: <%= @task.user.name %></p>
-
+<p>
+<% @task.labels.each do |label| %>
+  <%= label.name %>
+<% end %>
+</p>
 
 <div class="user_only_link">
   <% if @task.user == current_user %>

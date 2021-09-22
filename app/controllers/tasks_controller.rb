@@ -17,6 +17,8 @@ class TasksController < ApplicationController
       @tasks = current_user.tasks.search_title(params[:search_title]).page(params[:page]).per(3)
     elsif params[:search_status].present?
       @tasks = current_user.tasks.search_status(params[:search_status]).page(params[:page]).per(3)
+    elsif params[:label_id].present?
+      @tasks = Task.joins(:labels).where(labels:{id: params[:label_id]}).page(params[:page]).per(3)
     end
   end
 
@@ -62,6 +64,6 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
   end
   def task_params
-    params.require(:task).permit(:title, :content, :expired_at, :status, :priority, :user)
+    params.require(:task).permit(:title, :content, :expired_at, :status, :priority, :user, label_ids:[])
   end
 end
