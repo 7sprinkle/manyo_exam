@@ -6,6 +6,16 @@
 <p>内容: <%= @task.content %></p>
 <p>終了期限: <%= @task.expired_at %></p>
 <p>ステータス: <%= @task.status %></p>
+<p>優先度: <%= @task.priority %></p>
+<p>作成者: <%= @task.user.name %></p>
 
-<%= link_to 'Edit', edit_task_path(@task) %> |
+
+<div class="user_only_link">
+  <% if @task.user == current_user %>
+    <%= link_to '編集', edit_task_path(@task.id) %>
+    <%= link_to '削除', task_path(@task.id), method: :delete, data: { confirm: '本当に削除しますか?' } %>
+  <% end %>
+</div>
+<div class="show_back">
 <%= link_to 'Back', tasks_path %>
+</div>

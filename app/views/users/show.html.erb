@@ -1,0 +1,17 @@
+<div class="main user-show">
+  <div class="container">
+    <div class="user">
+      <h1>マイページ</h1>
+      <h3><%= @user.name %>さん、ようこそ。</h3>
+      <p>メールアドレス: <%= @user.email %></p>
+      <p>管理者権限：<%= @user.admin == true ? 'あり' : 'なし' %></p>
+    </div>
+
+    <div class="choice">
+      <% if @user.id==@current_user.id %>
+        <%= link_to "編集", edit_user_path(@user), class: 'btn btn-success' %>
+        <%= link_to '削除', user_path(@user), method: :delete, class: 'btn btn-danger', data: { confirm: '本当に削除しますか?' } %>
+      <% end %>
+    </div>
+  </div>
+</div>
