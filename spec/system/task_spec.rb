@@ -15,7 +15,7 @@ RSpec.describe 'タスク管理機能', type: :system do
       visit new_task_path
       fill_in 'task[title]', with: 'test_title'
       fill_in 'task[content]', with: 'test_content'
-      fill_in 'task[expired_at]', with: '2021-10-11 00:00:00'.to_date
+      fill_in 'task[expired_at]', with: '2021-08-11 00:00:00'.to_date
       find('.field_status').set('着手中')
       find('.field_priority').set('中')
       click_button '送信'
@@ -44,7 +44,7 @@ RSpec.describe 'タスク管理機能', type: :system do
     end
     context 'タスクが終了期限の降順に並んでいる場合' do
       it '終了期限が遠いタスクが一番上に表示される' do
-        task = FactoryBot.create(:task, user:basic_user, title: 'limit_far', expired_at:'2021-10-12 00:00:00')
+        task = FactoryBot.create(:task, user:basic_user, title: 'limit_far', expired_at:'2021-09-12 00:00:00')
         visit tasks_path
         task_list = all('.task_row')
         expect(task_list[0]).to have_content 'limit_far'
