@@ -12,22 +12,28 @@
   <% end %>
 
   <%= form.label :title%>
-  <%= form.text_field :title%>
+  <%= form.text_field :title, class: "form-control" %>
 
   <%= form.label :content %>
-  <%= form.text_area :content %>
+  <%= form.text_area :content, class: "form-control" %>
 
   <%= form.label :終了期限 %>
-  <%= form.date_field :expired_at%>
+  <%= form.date_field :expired_at, class: "form-control" %>
 
   <div class="field_status">
   <%= form.label :ステータス %>
-  <%= form.select :status, Task.statuses.keys.to_a, {} %>
+  <%= form.select :status, Task.statuses.keys.to_a, {}, class: "form-control"  %>
   </div>
 
   <div class="field_priority">
   <%= form.label :優先順位 %>
-  <%= form.select :priority, Task.priorities.keys.to_a, {} %>
+  <%= form.select :priority, Task.priorities.keys.to_a, {}, class: "form-control"  %>
+  </div>
+  <div class="field_label">
+    <% Label.all.each do |label| %>
+      <%= form.check_box :label_ids, { multiple: true, checked: @task.labels.find_by(id: label.id).present?, include_hidden: false }, label[:id] %>
+      <label class='badge badge-secondary'><%= label.name %></label>
+    <% end %>
   </div>
 
   <div class="actions">
